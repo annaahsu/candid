@@ -26,17 +26,43 @@ blockquote {
 }
 
 .img {
-  max-width: 24em;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, .25);
-
 }
 
 .img-div {
-  padding-bottom: 2em;
+  margin-bottom: 2em;
+  .img {
+    max-width: 24em;
+  }
 }
 
 .img-grid {
   -webkit-columns: 24em;
   -moz-columns: 24em;
   columns: 24em;
+}
+
+.room {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4em;
+}
+
+// .photo {
+//   flex: 1 1 0;
+//   .img {
+//     max-width: 24em;
+//   }
+// }
+
+.room {
+  .img {
+    max-width: 36em;
+  }
+}
+
+.words {
+  h1 {
+    margin-top: 0;
+  }
 }

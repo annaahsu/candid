@@ -11,6 +11,7 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -18,6 +19,13 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `room`,
+        path: `./src/room/`,
+      }
     },
     {
       resolve: `gatsby-omni-font-loader`,

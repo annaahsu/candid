@@ -3,7 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Image = ({ src, desc }) => {
   return (
-    <div className="img-div">
+    <div>
       <GatsbyImage className="img" image={src} alt={desc} />
     </div>
   );

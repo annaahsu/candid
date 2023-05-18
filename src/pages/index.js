@@ -1,5 +1,6 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
 import Img from "../components/image";
 import "../styles/style.scss";
 
@@ -18,12 +19,19 @@ const IndexPage = ({ data }) => {
           perspective. From a new direction to brighter colors, let me share
           with you how I see the world. Sometimes, even how the world sees me.
         </p>
-        <p>Shot on iPhone.</p>
+        <p>Shot on iPhone by <a href="https://annahsu.dev">me</a>.</p>
       </div>
       <div className="img-grid">
-        {data.allImageSharp.nodes.map((node) => (
-          <Img src={node.gatsbyImageData} desc="" />
-        ))}
+        {data.allMdx.nodes.map((node) => {
+          const image = getImage(node.frontmatter.image)
+          return (
+            <Link to={node.frontmatter.slug} key={node.id}>
+              <div className="img-div" title={node.frontmatter.title}>
+                <Img src={image} desc={node.frontmatter.image_alt} />
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </main>
   );
@@ -31,9 +39,19 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query {
-    allImageSharp {
+    allMdx {
       nodes {
-        gatsbyImageData
+        frontmatter {
+          title
+          slug
+          image_alt
+          image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        id
       }
     }
   }
